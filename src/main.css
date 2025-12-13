@@ -850,3 +850,31 @@ section h1:hover::after {
     height: 200px;
   }
 }
+
+
+/* Sound Toggle Button */
+.sound-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 10px 15px;
+  font-size: 20px;
+  background-color: #f6d4b1;
+  border: 3px solid var(--color);
+  box-shadow: 4px 4px 0px rgba(82, 82, 82, 0.25);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'public-pixel', monospace;
+}
+
+.sound-toggle:hover {
+  transform: translateY(-3px);
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.35);
+  border-color: #f99021;
+}
+
+.sound-toggle:active {
+  transform: translateY(0);
+  box-shadow: 2px 2px 0px rgba(82, 82, 82, 0.25);
+}

@@ -321,12 +321,18 @@
       </div>
       <div>COPYRIGHT © 2025-2026 Eshwar Vijay.</div>
     </footer>
-    <script>
+    <script type="module">
+      import soundManager from '/src/soundManager.ts';
+      
+      // Make soundManager globally available
+      window.soundManager = soundManager;
+      
       function closeMenu() {
         document.getElementsByTagName("nav")[0].classList.remove(["active"]);
       }
 
       function toggleMenu() {
+        soundManager.playButtonClick();
         const nav = document.getElementsByTagName("nav")[0];
         if (nav.classList.contains("active")) {
           nav.classList.remove(["active"]);
@@ -334,6 +340,40 @@
           nav.classList.add("active");
         }
       }
+      
+      // Make functions globally available
+      window.closeMenu = closeMenu;
+      window.toggleMenu = toggleMenu;
+      
+      // Add click sounds to all buttons and links
+      document.addEventListener('DOMContentLoaded', () => {
+        // Add click sound to all buttons
+        document.querySelectorAll('button, .btn, a[href^="#"]').forEach(element => {
+          element.addEventListener('click', () => {
+            soundManager.playButtonClick();
+          });
+        });
+        
+        // Add hover sound to interactive elements
+        document.querySelectorAll('.timeline-item, .gallery-item, button, .btn').forEach(element => {
+          element.addEventListener('mouseenter', () => {
+            soundManager.playHover();
+          });
+        });
+        
+        // Add sound toggle button
+        const soundToggle = document.createElement('button');
+        soundToggle.className = 'sound-toggle btn';
+        soundToggle.innerHTML = '🔊';
+        soundToggle.style.cssText = 'position: fixed; bottom: 20px; right: 20px; z-index: 1000; padding: 10px 15px; font-size: 20px;';
+        soundToggle.addEventListener('click', (e) => {
+          e.stopPropagation(); // Prevent double sound
+          const enabled = soundManager.toggle();
+          soundToggle.innerHTML = enabled ? '🔊' : '🔇';
+          if (enabled) soundManager.playButtonClick();
+        });
+        document.body.appendChild(soundToggle);
+      });
     </script>
     <script
       fetchpriority="high"
