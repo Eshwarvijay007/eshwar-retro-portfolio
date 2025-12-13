@@ -360,19 +360,6 @@
             soundManager.playHover();
           });
         });
-        
-        // Add sound toggle button
-        const soundToggle = document.createElement('button');
-        soundToggle.className = 'sound-toggle btn';
-        soundToggle.innerHTML = '🔊';
-        soundToggle.style.cssText = 'position: fixed; bottom: 20px; right: 20px; z-index: 1000; padding: 10px 15px; font-size: 20px;';
-        soundToggle.addEventListener('click', (e) => {
-          e.stopPropagation(); // Prevent double sound
-          const enabled = soundManager.toggle();
-          soundToggle.innerHTML = enabled ? '🔊' : '🔇';
-          if (enabled) soundManager.playButtonClick();
-        });
-        document.body.appendChild(soundToggle);
       });
     </script>
     <script
