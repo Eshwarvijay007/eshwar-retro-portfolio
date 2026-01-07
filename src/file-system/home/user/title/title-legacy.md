@@ -7,9 +7,8 @@
 
 
 #  Hi there,
-#  *I'm Edward*
+#  *I'm Eshwar*
 #  -Creative Developer
-##     — Computer Science graduate of
-##        the University of Melbourne
+##     — Information Science graduate
 ##
 ###   *Scroll* or type "help" to get started
