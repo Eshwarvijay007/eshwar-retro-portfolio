@@ -376,10 +376,12 @@
       <div id="loading-items">Starting...</div>
     </div>
     <footer>
-      <div>Made with ☕ and late-night debugging sessions</div>
-      <div>Eshwar Vijay © 2026 • No AI was harmed in the making of this site</div>
-      <div style="opacity: 0.5; font-size: 10px; margin-top: 8px;">// TODO: Add more easter eggs</div>
+      
+      <div>No AI was harmed in the making of this site</div>
+      <div>Eshwar Vijay © 2026 </div>
+      <div id="easter-hint" style="opacity: 0.5; font-size: 10px; margin-top: 8px; cursor: pointer;"> </div>
     </footer>
+    <div id="easter-toast" aria-live="polite"></div>
     <script type="module">
       import soundManager from '/src/soundManager.ts';
       
@@ -627,6 +629,40 @@
         runOnceWhenVisible(aboutTarget, () =>
           runGreetingSequence(aboutGreetingEl, { delayMs: 200, intervalMs: 1100, finalText: 'Hi there' })
         );
+
+        // Easter eggs (end of page)
+        const toastEl = document.getElementById('easter-toast');
+        let toastTimeout;
+        const showToast = (message) => {
+          if (!toastEl) return;
+          toastEl.textContent = message;
+          toastEl.classList.add('show');
+          window.clearTimeout(toastTimeout);
+          toastTimeout = window.setTimeout(() => toastEl.classList.remove('show'), 2200);
+        };
+
+        const hintEl = document.getElementById('easter-hint');
+        hintEl?.addEventListener('click', () => showToast('Try: ↑↑↓↓←→←→BA'));
+
+        const konami = [
+          'ArrowUp','ArrowUp','ArrowDown','ArrowDown',
+          'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight',
+          'KeyB','KeyA'
+        ];
+        let konamiIndex = 0;
+        window.addEventListener('keydown', (e) => {
+          if (e.code === konami[konamiIndex]) {
+            konamiIndex += 1;
+            if (konamiIndex === konami.length) {
+              konamiIndex = 0;
+              const enabled = document.documentElement.dataset.crt === 'true';
+              document.documentElement.dataset.crt = enabled ? 'false' : 'true';
+              showToast(`CRT mode: ${enabled ? 'OFF' : 'ON'}`);
+            }
+            return;
+          }
+          konamiIndex = e.code === konami[0] ? 1 : 0;
+        });
       });
     </script>
     <script
