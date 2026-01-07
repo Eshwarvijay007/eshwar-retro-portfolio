@@ -113,6 +113,23 @@ body {
   margin: 0;
   text-align: left;
 }
+
+.greeting-cycle {
+  display: inline-block;
+  transition: opacity 240ms ease, transform 240ms ease;
+  will-change: opacity, transform;
+}
+
+.greeting-cycle.is-fading {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .greeting-cycle {
+    transition: none;
+  }
+}
 #hero-backup ul {
   margin-left: 32px;
 }
