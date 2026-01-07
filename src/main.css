@@ -629,6 +629,202 @@ section.in-view .journey-card {
   }
 }
 
+/* GitHub-style Contribution Graph */
+.contributions-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 24px;
+  background: rgba(74, 60, 50, 0.25);
+  border: 1px solid rgba(212, 184, 154, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.contributions-section:hover {
+  background: rgba(74, 60, 50, 0.35);
+  border-color: rgba(249, 144, 33, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(74, 60, 50, 0.3);
+}
+
+section.in-view .contributions-section {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.contributions-header h3 {
+  font-family: 'chill', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #ffffff;
+  opacity: 0.8;
+  margin: 0 0 20px 0;
+  padding: 0;
+  text-align: left;
+  background: transparent;
+}
+
+.contributions-graph {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.graph-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: #ffffff;
+  opacity: 0.6;
+  padding-right: 8px;
+  min-width: 35px;
+}
+
+.graph-labels span {
+  height: 12px;
+  line-height: 12px;
+}
+
+.graph-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.month-labels {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 4px;
+  font-size: 0.75rem;
+  color: #ffffff;
+  opacity: 0.6;
+  margin-bottom: 4px;
+  padding-left: 43px;
+}
+
+.graph-grid {
+  display: grid;
+  grid-template-rows: repeat(7, 12px);
+  grid-auto-flow: column;
+  gap: 4px;
+  padding-left: 43px;
+}
+
+.contribution-day {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.contribution-day:hover {
+  transform: scale(1.3);
+  border-color: rgba(249, 144, 33, 0.5);
+}
+
+.contribution-day.level-0 {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.contribution-day.level-1 {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: rgba(76, 175, 80, 0.4);
+}
+
+.contribution-day.level-2 {
+  background: rgba(76, 175, 80, 0.5);
+  border-color: rgba(76, 175, 80, 0.6);
+}
+
+.contribution-day.level-3 {
+  background: rgba(76, 175, 80, 0.7);
+  border-color: rgba(76, 175, 80, 0.8);
+}
+
+.contribution-day.level-4 {
+  background: rgba(76, 175, 80, 0.9);
+  border-color: rgba(76, 175, 80, 1);
+}
+
+.graph-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: #ffffff;
+  opacity: 0.6;
+  margin-top: 8px;
+}
+
+.legend-colors {
+  display: flex;
+  gap: 4px;
+}
+
+.legend-box {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legend-box.level-0 {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.legend-box.level-1 {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: rgba(76, 175, 80, 0.4);
+}
+
+.legend-box.level-2 {
+  background: rgba(76, 175, 80, 0.5);
+  border-color: rgba(76, 175, 80, 0.6);
+}
+
+.legend-box.level-3 {
+  background: rgba(76, 175, 80, 0.7);
+  border-color: rgba(76, 175, 80, 0.8);
+}
+
+.legend-box.level-4 {
+  background: rgba(76, 175, 80, 0.9);
+  border-color: rgba(76, 175, 80, 1);
+}
+
+/* Responsive contributions graph */
+@media (max-width: 768px) {
+  .contributions-section {
+    padding: 16px;
+  }
+  
+  .graph-container {
+    overflow-x: scroll;
+  }
+  
+  .month-labels {
+    padding-left: 0;
+  }
+  
+  .graph-grid {
+    padding-left: 0;
+  }
+  
+  .graph-labels {
+    display: none;
+  }
+}
+
 /* Glitch effect on section headers */
 section h1 {
   position: relative;
