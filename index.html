@@ -109,7 +109,7 @@
       <div class="menu-body" onclick="closeMenu()">
         <a href="#home" onclick="closeMenu()">Home</a>
         <a href="#aboutMe" onclick="closeMenu()">About</a>
-        <a href="#experience" onclick="closeMenu()">Experience</a>
+        <a href="#journey" onclick="closeMenu()">Journey</a>
         <a href="#contact" onclick="closeMenu()">Contact</a>
       </div>
 
@@ -118,7 +118,7 @@
 
     <main>
       <section>
-        <h1 id="aboutMe">Hi there</h1>
+        <h1 id="aboutMe" data-text="Hi there">Hi there</h1>
         <p>
           My name is Eshwar Vijay, I’m an award-winning web dev / digital
           designer and full stack software engineer. I have a passion for all
@@ -132,7 +132,7 @@
       </section>
 
       <section>
-        <h1 id="experience" data-text="Experience">Experience</h1>
+        <h1 id="journey" data-text="Journey">Journey</h1>
       </section>
 
       <section>
@@ -208,38 +208,93 @@
           });
         });
         
-        // Split text into characters for Miao-style animation
+        // Encrypted text animation
+        const encryptedChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        
+        function getRandomChar() {
+          return encryptedChars[Math.floor(Math.random() * encryptedChars.length)];
+        }
+        
         function splitTextToChars(element) {
           const text = element.textContent;
+          const originalText = text;
+          element.setAttribute('data-original', originalText);
           element.textContent = '';
-          text.split('').forEach(char => {
+          
+          text.split('').forEach((char, index) => {
             const span = document.createElement('span');
             span.className = 'char';
-            span.textContent = char === ' ' ? '\u00A0' : char; // Preserve spaces
+            span.setAttribute('data-char', char === ' ' ? '\u00A0' : char);
+            span.textContent = char === ' ' ? '\u00A0' : getRandomChar();
             span.style.display = 'inline-block';
             element.appendChild(span);
           });
         }
         
-        // Scroll reveal animation for headings (Miao-style)
+        function decryptText(element) {
+          const chars = element.querySelectorAll('.char');
+          
+          chars.forEach((char, index) => {
+            const originalChar = char.getAttribute('data-char');
+            let iterations = 0;
+            const maxIterations = 8;
+            
+            const interval = setInterval(() => {
+              if (iterations < maxIterations) {
+                char.textContent = getRandomChar();
+                iterations++;
+              } else {
+                char.textContent = originalChar;
+                clearInterval(interval);
+              }
+            }, 50);
+            
+            // Stagger the start of each character's decryption
+            setTimeout(() => {
+              // Animation handled by interval above
+            }, index * 50);
+          });
+        }
+        
+        // Scroll reveal animation for headings
         const observerOptions = {
-          threshold: 0.2,
-          rootMargin: '0px 0px -100px 0px'
+          threshold: 0.3,
+          rootMargin: '0px 0px -150px 0px'
         };
         
         const headingObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('active');
+            if (entry.isIntersecting && !entry.target.classList.contains('decrypted')) {
+              entry.target.classList.add('active', 'decrypted');
+              setTimeout(() => {
+                decryptText(entry.target);
+              }, 200);
             }
           });
         }, observerOptions);
+        
+        // Section observer for paragraph animations
+        const sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+            }
+          });
+        }, {
+          threshold: 0.2,
+          rootMargin: '0px 0px -100px 0px'
+        });
         
         // Apply to all section headings
         document.querySelectorAll('section h1').forEach(heading => {
           splitTextToChars(heading);
           heading.classList.add('reveal');
           headingObserver.observe(heading);
+        });
+        
+        // Apply to all sections for paragraph animations
+        document.querySelectorAll('section').forEach(section => {
+          sectionObserver.observe(section);
         });
       });
     </script>
