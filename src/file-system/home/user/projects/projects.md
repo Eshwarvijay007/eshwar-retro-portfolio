@@ -1,10 +1,12 @@
+
+
 # PROJECTS
 ========================================================================
 
 ## FEATURED PROJECTS
 ------------------------------------------------------------------------
 
-* TRIPPER - AI Trip Planner
+### *TRIPPER* - AI Trip Planner
 
 AI-powered trip planner that creates personalized travel itineraries
 based on your preferences and budget. Smart recommendations for
@@ -14,7 +16,7 @@ destinations, activities, and accommodations.
 
 ------------------------------------------------------------------------
 
-* SOULCLI - AI Terminal Assistant
+### *SOULCLI* - AI Terminal Assistant
 
 Intelligent terminal assistant that brings AI capabilities directly
 to your command line interface. Natural language commands, smart
@@ -24,7 +26,7 @@ suggestions, and context-aware assistance.
 
 ------------------------------------------------------------------------
 
-* FLATSHARE CHAOS - Multi-Agent AI System
+### *FLATSHARE CHAOS* - Multi-Agent AI System
 
 Multi-agent AI system where autonomous agents engage in dynamic
 conversations and collaborative problem-solving. Watch AI agents
@@ -45,3 +47,4 @@ interact, debate, and reach consensus.
 Tip: Type "cd ~/journey" to see my experience and education
 Tip: Type "cd ~/contact" to get in touch
 ========================================================================
+

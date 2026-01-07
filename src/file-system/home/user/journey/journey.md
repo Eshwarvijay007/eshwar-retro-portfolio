@@ -1,10 +1,12 @@
-JOURNEY
+
+
+# JOURNEY
 ========================================================================
 
-EXPERIENCE
+## EXPERIENCE
 ------------------------------------------------------------------------
 
-[CURRENT] AmberStudent - AI Engineer (ASD)
+### [CURRENT] AmberStudent - AI Engineer (ASD)
 Duration: Jun 2024 - Present
 Location: Onsite
 
@@ -28,7 +30,7 @@ Location: Onsite
 
 ------------------------------------------------------------------------
 
-AmberStudent - Engineering Trainee
+### AmberStudent - Engineering Trainee
 Duration: Oct 2024 - May 2025
 Location: Onsite
 
@@ -46,7 +48,7 @@ Location: Onsite
 
 ------------------------------------------------------------------------
 
-Aqmenz Automation Private Limited - Intern
+### Aqmenz Automation Private Limited - Intern
 Duration: Aug 2023 - Nov 2023
 Location: Remote
 
@@ -64,10 +66,10 @@ Location: Remote
 
 ========================================================================
 
-EDUCATION
+## EDUCATION
 ------------------------------------------------------------------------
 
-SJB Institute of Technology
+### SJB Institute of Technology
 Degree: Bachelor of Engineering
 Branch: Information Science and Engineering
 Duration: 2020 - 2024
@@ -77,4 +79,6 @@ Location: Bangalore
 
 ========================================================================
 Tip: Type "cd ~/projects" to explore my projects
+Tip: Type "cd ~/certifications" to see my certifications
 ========================================================================
+
