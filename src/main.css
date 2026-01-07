@@ -134,6 +134,80 @@ body {
   margin-left: 32px;
 }
 
+/* Contact */
+.contact-intro {
+  margin-top: 40px;
+  margin-bottom: 22px;
+  text-align: center;
+  opacity: 0.78;
+}
+
+.about-wrap {
+  margin-top: 40px;
+}
+
+.about-lede {
+  font-size: 1.12rem;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.about-body {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.about-name,
+.about-skill {
+  font-weight: 700;
+  color: rgba(246, 212, 177, 0.95);
+}
+
+.contact-links {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  border: none;
+  box-shadow: none;
+  text-decoration: none;
+  position: relative;
+  opacity: 0.78;
+  transition: opacity 180ms ease, transform 180ms ease;
+  transform-origin: left center;
+}
+
+.contact-link:hover {
+  opacity: 1;
+  transform: scale(1.06);
+  box-shadow: none;
+}
+
+.contact-link:active {
+  opacity: 1;
+  transform: scale(1.02);
+  box-shadow: none;
+}
+
+.contact-link svg {
+  flex: 0 0 auto;
+  color: rgba(246, 212, 177, 0.9);
+  opacity: 0.9;
+}
+
 .webgl:active {
   cursor: grabbing;
 }
