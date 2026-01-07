@@ -110,8 +110,6 @@
         <a href="#home" onclick="closeMenu()">Home</a>
         <a href="#aboutMe" onclick="closeMenu()">About</a>
         <a href="#experience" onclick="closeMenu()">Experience</a>
-        <a href="#education" onclick="closeMenu()">Education</a>
-        <a href="#gallery" onclick="closeMenu()">Gallery</a>
         <a href="#contact" onclick="closeMenu()">Contact</a>
       </div>
 
@@ -135,157 +133,6 @@
 
       <section>
         <h1 id="experience" data-text="Experience">Experience</h1>
-        <hr />
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h2>Senior AI Engineer</h2>
-              <h3>Tech Company • 2023 - Present</h3>
-              <p>
-                Leading AI/ML initiatives and developing cutting-edge solutions
-                for enterprise clients. Specializing in natural language processing
-                and computer vision applications.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h2>Full Stack Developer</h2>
-              <h3>Startup Inc • 2021 - 2023</h3>
-              <p>
-                Built scalable web applications using React, TypeScript, and Node.js.
-                Implemented CI/CD pipelines and improved system performance by 40%.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h2>Software Engineer Intern</h2>
-              <h3>Innovation Labs • 2020 - 2021</h3>
-              <p>
-                Developed features for mobile and web applications. Collaborated
-                with cross-functional teams on agile projects.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h1 id="education" data-text="Education">Education</h1>
-        <hr />
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h2>Master of Computer Science</h2>
-              <h3>University Name • 2021 - 2023</h3>
-              <p>
-                Specialized in Artificial Intelligence and Machine Learning.
-                Thesis on neural network optimization techniques.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h2>Bachelor of Software Engineering</h2>
-              <h3>University Name • 2017 - 2021</h3>
-              <p>
-                First Class Honours. Focus on software architecture, algorithms,
-                and web technologies. Dean's List recipient.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h1 id="gallery" data-text="Gallery">Gallery</h1>
-        <hr />
-        <p style="text-align: center; margin-bottom: 30px;">
-          Adventures, memories, and moments captured around the world
-        </p>
-        
-        <div class="gallery-grid">
-          <div class="gallery-item">
-            <div class="gallery-frame">
-              <img src="/src/img/pavilion1.png" alt="Travel memory 1" />
-              <div class="gallery-overlay">
-                <div class="gallery-text">
-                  <h3>Mountain Adventure</h3>
-                  <p>Exploring the peaks • 2023</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item">
-            <div class="gallery-frame">
-              <img src="/src/img/pavilion2.png" alt="Travel memory 2" />
-              <div class="gallery-overlay">
-                <div class="gallery-text">
-                  <h3>City Lights</h3>
-                  <p>Urban exploration • 2023</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item">
-            <div class="gallery-frame">
-              <img src="/src/img/jackalope.png" alt="Travel memory 3" />
-              <div class="gallery-overlay">
-                <div class="gallery-text">
-                  <h3>Coastal Sunset</h3>
-                  <p>Beach vibes • 2022</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item">
-            <div class="gallery-frame">
-              <img src="/src/img/tgp.png" alt="Travel memory 4" />
-              <div class="gallery-overlay">
-                <div class="gallery-text">
-                  <h3>Desert Dreams</h3>
-                  <p>Sand dunes adventure • 2022</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item">
-            <div class="gallery-frame">
-              <img src="/src/img/edsites.png" alt="Travel memory 5" />
-              <div class="gallery-overlay">
-                <div class="gallery-text">
-                  <h3>Forest Trail</h3>
-                  <p>Nature walk • 2021</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item">
-            <div class="gallery-frame">
-              <img src="/src/img/oosd-crop.png" alt="Travel memory 6" />
-              <div class="gallery-overlay">
-                <div class="gallery-text">
-                  <h3>Historic Sites</h3>
-                  <p>Cultural journey • 2021</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       <section>
@@ -359,6 +206,40 @@
           element.addEventListener('mouseenter', () => {
             soundManager.playHover();
           });
+        });
+        
+        // Split text into characters for Miao-style animation
+        function splitTextToChars(element) {
+          const text = element.textContent;
+          element.textContent = '';
+          text.split('').forEach(char => {
+            const span = document.createElement('span');
+            span.className = 'char';
+            span.textContent = char === ' ' ? '\u00A0' : char; // Preserve spaces
+            span.style.display = 'inline-block';
+            element.appendChild(span);
+          });
+        }
+        
+        // Scroll reveal animation for headings (Miao-style)
+        const observerOptions = {
+          threshold: 0.2,
+          rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const headingObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+            }
+          });
+        }, observerOptions);
+        
+        // Apply to all section headings
+        document.querySelectorAll('section h1').forEach(heading => {
+          splitTextToChars(heading);
+          heading.classList.add('reveal');
+          headingObserver.observe(heading);
         });
       });
     </script>
